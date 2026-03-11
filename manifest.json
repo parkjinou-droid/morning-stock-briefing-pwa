@@ -1,0 +1,26 @@
+{
+  "name": "아침 주식 브리핑",
+  "short_name": "주식브리핑",
+  "description": "네이버 금융 뉴스와 주요 지수를 알려주는 아침 주식 브리핑 PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a237e",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "news"],
+  "lang": "ko"
+}
