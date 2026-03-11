@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1a237e">
+  <title>아침 주식 브리핑</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Malgun Gothic', sans-serif; background: #f0f2f5; color: #333; }
+    header { background: #1a237e; color: white; padding: 16px 20px; text-align: center; }
+    header h1 { font-size: 1.4rem; }
+    header p { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+    .container { max-width: 700px; margin: 0 auto; padding: 16px; }
+    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .card h2 { font-size: 1rem; color: #1a237e; margin-bottom: 12px; border-bottom: 2px solid #e8eaf6; padding-bottom: 8px; }
+    .btn { display: block; width: 100%; padding: 14px; background: #1a237e; color: white; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; margin-bottom: 10px; }
+    .btn:hover { background: #283593; }
+    .btn.secondary { background: #546e7a; }
+    #result { white-space: pre-wrap; font-size: 0.9rem; line-height: 1.7; color: #444; min-height: 60px; }
+    .loading { text-align: center; color: #888; padding: 20px; }
+    .stock-list { list-style: none; }
+    .stock-list li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+    .up { color: #e53935; font-weight: bold; }
+    .down { color: #1e88e5; font-weight: bold; }
+    .flat { color: #888; }
+    footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #aaa; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📈 아침 주식 브리핑</h1>
+    <p id="today-date"></p>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h2>🔔 오늘의 브리핑</h2>
+      <button class="btn" onclick="getBriefing()">브리핑 가져오기</button>
+      <div id="result">버튼을 눌러 오늘의 주식 브리핑을 확인하세요.</div>
+    </div>
+    <div class="card">
+      <h2>📊 주요 지수</h2>
+      <button class="btn secondary" onclick="getStocks()">지수 조회</button>
+      <ul class="stock-list" id="stock-list"></ul>
+    </div>
+  </div>
+  <footer>아침 주식 브리핑 PWA &copy; 2026</footer>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('today-date').textContent =
+      new Date().toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'long'});
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
